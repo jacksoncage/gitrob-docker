@@ -11,14 +11,15 @@
 #                                               #
 #  Start your postgres container with           #
 #  docker run -P \                              #
-#      --name gitrob-psql aykit/gitrob-psql     #
+#    --name psql jacksoncage/gitrob-psql        #
 #                                               #
 #  Now, start the gitrob container              #
 #  linked to the gitrob-psql                    #
 #  container:                                   #
 #  docker -run \                                #
-#      --link gitrob-psql:gitrob-psql \         #
-#      aykit/gitrob organisation_of_choice      #
+#    --link psql:psql \                         #
+#    -e organisation_of_choice                  #
+#    jacksoncage/gitrob                         #
 #                                               #
 #===============#===============#===============#
 
@@ -45,7 +46,7 @@ RUN gem install gitrob
 COPY .gitrobrc /root/
 COPY start-gitrob.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/start-gitrob.sh
-RUN touch /var/lib/gems/1.9.1/gems/gitrob-0.0.4/agreement
+RUN touch /var/lib/gems/1.9.1/gems/gitrob-0.0.6/agreement
 
 
 #=============#

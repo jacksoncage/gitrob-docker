@@ -1,0 +1,10 @@
+gitrob:
+  build: ./gitrob
+  ports:
+    - "9393:9393"
+  links:
+    - psql
+  environment:
+    ORGANIZATION: github
+psql:
+  build: ./gitrob-psql
